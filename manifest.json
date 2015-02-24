@@ -1,0 +1,17 @@
+{
+  "name": "repo_url_expand",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "expand repository url",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://bitbucket.org/*"
+      ],
+      "js": [
+        "zepto.min.js",
+        "script.js"
+      ]
+    }
+  ]
+}
