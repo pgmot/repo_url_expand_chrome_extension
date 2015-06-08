@@ -6,9 +6,16 @@ document.addEventListener('DOMNodeInserted', function(){
     $("li.iterable-item span.repo-name").each(function(){
       if(!$(this).children('input')[0]){
         var ownerRepo = $(this).children("a.execute").text();
-        var splits = ownerRepo.split("/");
-        var repoUrl = "git@bitbucket.org:" + splits[0] + "/" + splits[1] + ".git";
-        $(this).append("<input type='text' class='clone-url-input' readonly='readonly' style='width: 500px;' value='" + repoUrl.replace(/ /g, "") + "'>");
+        var splits = ownerRepo.replace(/ /g, "").split("/");
+        var teamname = splits[0];
+        var repo = splits[1];
+        if(typeof repo === "undefined"){
+          teamname = $("span.username").text().replace(/\(|\)/g, "");
+          repo = splits[0];
+        }
+
+        var repoUrl = "git@bitbucket.org:" + teamname + "/" + repo + ".git";
+        $(this).append("<input type='text' class='clone-url-input' readonly='readonly' style='width: 500px;' value='" + repoUrl + "'>");
       }
     });
   }, 3000);
