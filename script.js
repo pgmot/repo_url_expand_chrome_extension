@@ -9,7 +9,6 @@ document.addEventListener('DOMNodeInserted', function(){
         var splits = ownerRepo.split("/");
         var repoUrl = "git@bitbucket.org:" + splits[0] + "/" + splits[1] + ".git";
         $(this).append("<input type='text' class='clone-url-input' readonly='readonly' style='width: 500px;' value='" + repoUrl.replace(/ /g, "") + "'>");
-        console.log(this);
       }
     });
   }, 3000);
